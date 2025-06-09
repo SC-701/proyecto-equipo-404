@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router-dom';
 import React, { lazy } from 'react';
 
 // project import
@@ -16,12 +17,15 @@ const MainRoutes = {
   children: [
     {
       path: '/',
-      element: <DashboardDefault />
+  element: <Navigate to="/application/login" />
     },
     {
-      path: '/dashboard/default',
-      element: <DashboardDefault />
-    },
+  path: '/dashboard/default',
+  element: localStorage.getItem('auth') === 'true'
+    ? <DashboardDefault />
+    : <Navigate to={`${import.meta.env.BASE_URL}/application/login`} />
+}
+,
     { path: '/utils/util-typography', element: <UtilsTypography /> },
     { path: '/sample-page', element: <SamplePage /> }
   ]

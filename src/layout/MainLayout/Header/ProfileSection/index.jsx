@@ -46,6 +46,12 @@ const ProfileSection = () => {
     prevOpen.current = open;
   }, [open]);
 
+  const handleLogout = () => {
+  localStorage.removeItem('auth');
+  window.location.href = `${import.meta.env.BASE_URL}/application/login`;
+};
+
+
   return (
     <>
       <Button
@@ -119,7 +125,7 @@ const ProfileSection = () => {
                     </ListItemIcon>
                     <ListItemText primary="Lock Screen" />
                   </ListItemButton>
-                  <ListItemButton selected={selectedIndex === 4}>
+                  <ListItemButton selected={selectedIndex === 4} onClick={handleLogout}>
                     <ListItemIcon>
                       <MeetingRoomTwoToneIcon />
                     </ListItemIcon>

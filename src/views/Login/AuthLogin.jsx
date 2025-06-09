@@ -93,7 +93,16 @@ const AuthLogin = ({ ...rest }) => {
           email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
           password: Yup.string().max(255).required('Password is required')
         })}
-      >
+
+        onSubmit={(values, { setSubmitting }) => {
+    setTimeout(() => {
+      // Simular login exitoso
+      localStorage.setItem('auth', 'true');
+window.location.href = `${import.meta.env.BASE_URL}/dashboard/default`;
+      setSubmitting(false);
+    }, 500);
+  }}
+>
         {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
           <form noValidate onSubmit={handleSubmit} {...rest}>
             <TextField
