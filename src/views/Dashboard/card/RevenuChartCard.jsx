@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -8,10 +9,11 @@ import { Box, Card, CardContent, CardHeader, Divider, Grid, Typography, useMedia
 // third-party
 import Chart from 'react-apexcharts';
 
-// ==============================|| REVENUE CHART CARD ||============================== //
+// ==============================|| TASKS CHART CARD ||============================== //
 
 const RevenuChartCard = ({ chartData }) => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
   const matchDownXs = useMediaQuery(theme.breakpoints.down('sm'));
@@ -20,14 +22,20 @@ const RevenuChartCard = ({ chartData }) => {
     <Card>
       <CardHeader
         title={
-          <Typography t="div" className="card-header">
-            Total Revenue
+          <Typography component="div" className="card-header">
+            Tasks Overview
           </Typography>
         }
       />
       <Divider />
       <CardContent>
-        <Grid container spacing={2} direction={matchDownMd && !matchDownXs ? 'row' : 'column'}>
+        <Grid
+          container
+          spacing={2}
+          direction={matchDownMd && !matchDownXs ? 'row' : 'column'}
+          onClick={() => navigate('/tareas')}
+          sx={{ cursor: 'pointer' }}
+        >
           <Grid item xs={12} sm={7} md={12}>
             <Chart {...chartData} />
           </Grid>
@@ -46,27 +54,27 @@ const RevenuChartCard = ({ chartData }) => {
           >
             <Grid item>
               <Grid container direction="column">
-                <Typography variant="h6">Youtube</Typography>
-                <Typography variant="subtitle1" sx={{ color: theme.palette.primary.main }}>
-                  + 16.85%
+                <Typography variant="h6">Pending</Typography>
+                <Typography variant="subtitle1" sx={{ color: theme.palette.warning.main }}>
+                  20 tasks
                 </Typography>
               </Grid>
             </Grid>
             <Grid item>
               <Grid container direction="column">
-                <Typography variant="h6">Facebook</Typography>
-                <Box color={theme.palette.success.main}>
+                <Typography variant="h6">In Progress</Typography>
+                <Box color={theme.palette.primary.main}>
                   <Typography variant="subtitle1" color="inherit">
-                    +45.36%
+                    12 tasks
                   </Typography>
                 </Box>
               </Grid>
             </Grid>
             <Grid item>
               <Grid container direction="column">
-                <Typography variant="h6">Twitter</Typography>
-                <Typography variant="subtitle1" sx={{ color: theme.palette.warning.main }}>
-                  - 50.69%
+                <Typography variant="h6">Completed</Typography>
+                <Typography variant="subtitle1" sx={{ color: theme.palette.success.main }}>
+                  48 tasks
                 </Typography>
               </Grid>
             </Grid>

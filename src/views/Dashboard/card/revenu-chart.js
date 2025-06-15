@@ -1,5 +1,3 @@
-import value from 'assets/scss/_themes-vars.module.scss';
-// eslint-disable-next-line
 export default {
   height: 228,
   type: 'donut',
@@ -11,7 +9,7 @@ export default {
       min: 0,
       max: 100
     },
-    labels: ['Youtube', 'Facebook', 'Twitter'],
+    labels: ['Pending', 'In Progress', 'Completed'],
     legend: {
       show: true,
       position: 'bottom',
@@ -24,7 +22,7 @@ export default {
       horizontal: 10,
       vertical: 10
     },
-    colors: [value.error, value.primary, value.info]
+    colors: ['#ff9800', '#2196f3', '#4caf50'] // amarillo, azul, verde
   },
-  series: [1258, 975, 500]
+  series: [20, 12, 48] // cantidad de tareas
 };
