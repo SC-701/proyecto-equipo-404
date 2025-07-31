@@ -58,6 +58,7 @@
     <Folder Include="Properties" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Venta.sql" />
@@ -65,5 +66,30 @@
     <Build Include="dbo\Tables\Platillo.sql" />
     <Build Include="dbo\Tables\Estado.sql" />
     <Build Include="dbo\Tables\DetalleVenta.sql" />
+    <Build Include="dbo\Stored Procedures\ObtenerEstados.sql" />
+    <Build Include="dbo\Stored Procedures\ObtenerEstado.sql" />
+    <Build Include="dbo\Stored Procedures\EliminarEstado.sql" />
+    <Build Include="dbo\Stored Procedures\EditarEstado.sql" />
+    <Build Include="dbo\Stored Procedures\AgregarEstado.sql" />
+    <Build Include="dbo\Stored Procedures\ObtenerTiposPlatillos.sql" />
+    <Build Include="dbo\Stored Procedures\ObtenerTipoPlatillo.sql" />
+    <Build Include="dbo\Stored Procedures\EliminarTipoPlatillo.sql" />
+    <Build Include="dbo\Stored Procedures\EditarTipoPlatillo.sql" />
+    <Build Include="dbo\Stored Procedures\AgregarTipoPlatillo.sql" />
+    <Build Include="dbo\Stored Procedures\AgregarPlatillo.sql" />
+    <Build Include="dbo\Stored Procedures\ObtenerPlatillos.sql" />
+    <Build Include="dbo\Stored Procedures\ObtenerPlatillo.sql" />
+    <Build Include="dbo\Stored Procedures\EliminarPlatillo.sql" />
+    <Build Include="dbo\Stored Procedures\EditarPlatillo.sql" />
+    <Build Include="dbo\Stored Procedures\ObtenerVentas.sql" />
+    <Build Include="dbo\Stored Procedures\ObtenerVenta.sql" />
+    <Build Include="dbo\Stored Procedures\EliminarVenta.sql" />
+    <Build Include="dbo\Stored Procedures\EditarVenta.sql" />
+    <Build Include="dbo\Stored Procedures\AgregarVenta.sql" />
+    <Build Include="dbo\Stored Procedures\ObtenerDetalleVenta.sql" />
+    <Build Include="dbo\Stored Procedures\ObtenerDetallesVentas.sql" />
+    <Build Include="dbo\Stored Procedures\EliminarDetalleVenta.sql" />
+    <Build Include="dbo\Stored Procedures\EditarDetalleVenta.sql" />
+    <Build Include="dbo\Stored Procedures\AgregarDetalleVenta.sql" />
   </ItemGroup>
 </Project>
