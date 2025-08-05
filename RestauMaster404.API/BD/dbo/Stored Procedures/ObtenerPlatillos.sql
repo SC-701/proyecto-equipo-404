@@ -5,7 +5,7 @@ BEGIN
     SELECT
         P.Id,
         P.IdTipoPlatillo,
-        TP.Nombre AS Tipo,
+        TP.Nombre AS TipoPlatillo,
         P.Nombre,
         P.Precio,
         P.Stock,
