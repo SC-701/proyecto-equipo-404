@@ -25,6 +25,11 @@ builder.Services.AddScoped<ITipoPlatilloFlujo, TipoPlatilloFlujo>();
 builder.Services.AddScoped<IPlatilloDA, PlatilloDA>();
 builder.Services.AddScoped<IPlatilloFlujo, PlatilloFlujo>();
 
+builder.Services.AddScoped<IVentaDA, VentaDA>();
+builder.Services.AddScoped<IVentaFlujo, VentaFlujo>();
+
+builder.Services.AddScoped<IDetalleVentaDA, DetalleVentaDA>();
+builder.Services.AddScoped<IDetalleVentaFlujo, DetalleVentaFlujo>();
 
 var app = builder.Build();
 
