@@ -3,12 +3,14 @@
 AS
 BEGIN
     SET NOCOUNT ON;
-    SELECT
+
+    SELECT 
         DV.Id,
         DV.IdVenta,
         V.Fecha,
+        V.Hora,
         DV.IdPlatillo,
-        P.Nombre AS Platillo,
+        P.Nombre AS NombrePlatillo,
         DV.Cantidad,
         DV.PrecioUnitario,
         DV.SubTotal
@@ -16,5 +18,5 @@ BEGIN
     INNER JOIN Ventas V ON DV.IdVenta = V.Id
     INNER JOIN Platillos P ON DV.IdPlatillo = P.Id
     WHERE DV.IdVenta = @IdVenta
-    ORDER BY DV.Id;
+    ORDER BY P.Nombre;
 END
