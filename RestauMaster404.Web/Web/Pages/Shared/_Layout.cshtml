@@ -19,6 +19,34 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="crudDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                CRUD
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="crudDropdown">
+                                <!-- Submenú Platillos -->
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Platillos</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" asp-page="/Platillos/Index">Ver Platillos</a></li>
+                                        <li><a class="dropdown-item" asp-page="/Platillos/Agregar">Agregar Platillo</a></li>
+                                        <li><a class="dropdown-item" asp-page="/Platillos/Editar">Editar Platillo</a></li>
+                                        <li><a class="dropdown-item" asp-page="/Platillos/Eliminar">Eliminar Platillo</a></li>
+                                    </ul>
+                                </li>
+
+                                <!-- Submenú Ventas -->
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Ventas</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" asp-page="/Ventas/Index">Ver Ventas</a></li>
+                                        <li><a class="dropdown-item" asp-page="/Ventas/Agregar">Agregar Venta</a></li>
+                                        <li><a class="dropdown-item" asp-page="/Ventas/Editar">Editar Venta</a></li>
+                                        <li><a class="dropdown-item" asp-page="/Ventas/Eliminar">Eliminar Venta</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
@@ -26,6 +54,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </nav>

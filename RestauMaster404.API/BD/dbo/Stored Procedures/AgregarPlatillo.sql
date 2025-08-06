@@ -1,10 +1,12 @@
-﻿CREATE PROCEDURE AgregarPlatillo
+﻿CREATE PROCEDURE [dbo].[AgregarPlatillo]
     @Id UNIQUEIDENTIFIER,
     @IdTipoPlatillo UNIQUEIDENTIFIER,
     @Nombre VARCHAR(100),
     @Precio FLOAT,
     @Stock INT,
-    @IdEstado UNIQUEIDENTIFIER
+    @IdEstado UNIQUEIDENTIFIER,
+	@Imagen VARBINARY(MAX)
+
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -15,7 +17,8 @@ BEGIN
             Nombre,
             Precio,
             Stock,
-            IdEstado
+            IdEstado,
+			Imagen
         )
         VALUES (
             @Id,
@@ -23,7 +26,8 @@ BEGIN
             @Nombre,
             @Precio,
             @Stock,
-            @IdEstado
+            @IdEstado,
+			@Imagen
         );
         SELECT @Id;
     COMMIT TRANSACTION
