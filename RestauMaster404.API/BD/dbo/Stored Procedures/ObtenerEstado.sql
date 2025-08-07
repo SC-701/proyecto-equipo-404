@@ -1,0 +1,9 @@
+﻿CREATE PROCEDURE ObtenerEstado
+    @Id UNIQUEIDENTIFIER
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT Id, Nombre
+    FROM Estados
+    WHERE Id = @Id;
+END

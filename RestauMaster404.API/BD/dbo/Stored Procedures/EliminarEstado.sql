@@ -1,0 +1,11 @@
+﻿CREATE PROCEDURE EliminarEstado
+    @Id UNIQUEIDENTIFIER
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRANSACTION
+        DELETE FROM Estados
+        WHERE Id = @Id;
+        SELECT @Id;
+    COMMIT TRANSACTION
+END

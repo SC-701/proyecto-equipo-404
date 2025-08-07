@@ -1,0 +1,11 @@
+﻿CREATE PROCEDURE EliminarTipoPlatillo
+    @Id UNIQUEIDENTIFIER
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRANSACTION
+        DELETE FROM TipoPlatillos
+        WHERE Id = @Id;
+        SELECT @Id;
+    COMMIT TRANSACTION
+END
