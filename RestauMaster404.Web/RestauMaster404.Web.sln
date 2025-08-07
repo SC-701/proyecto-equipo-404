@@ -3,11 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36109.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstracciones", "Abstracciones\Abstracciones.csproj", "{9F11CE81-EA28-4870-8821-96C71C2009E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abstracciones", "Abstracciones\Abstracciones.csproj", "{9F11CE81-EA28-4870-8821-96C71C2009E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{39E982FC-4C9C-4A20-8A29-F61634DD78A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{39E982FC-4C9C-4A20-8A29-F61634DD78A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reglas", "Reglas\Reglas.csproj", "{8CD75AE9-FC82-4659-BA7C-49B0C6361533}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reglas", "Reglas\Reglas.csproj", "{8CD75AE9-FC82-4659-BA7C-49B0C6361533}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autorizacion.Flujo", "..\..\2025C02\Ejemplos\Seguridad\Seguridad.MiddlewareAutorizacion\Abstracciones.BW\Autorizacion.Flujo.csproj", "{F195DE5F-95F2-4930-830A-60B31C5DBCE5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autorizacion.Abstracciones", "..\..\2025C02\Ejemplos\Seguridad\Seguridad.MiddlewareAutorizacion\Autorizacion.Abstracciones\Autorizacion.Abstracciones.csproj", "{C7D944AA-36B4-465B-9AC0-75C39DE1C187}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autorizacion.DA", "..\..\2025C02\Ejemplos\Seguridad\Seguridad.MiddlewareAutorizacion\Autorizacion.DA\Autorizacion.DA.csproj", "{CAA4AF6B-74A3-47FF-84FF-C19033E185C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autorizacion.Middleware", "..\..\2025C02\Ejemplos\Seguridad\Seguridad.MiddlewareAutorizacion\Autorizacion.Middleware\Autorizacion.Middleware.csproj", "{ACBD1E2A-D9ED-42EE-A2DF-A3861B06C3C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +35,22 @@ Global
 		{8CD75AE9-FC82-4659-BA7C-49B0C6361533}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CD75AE9-FC82-4659-BA7C-49B0C6361533}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CD75AE9-FC82-4659-BA7C-49B0C6361533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F195DE5F-95F2-4930-830A-60B31C5DBCE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F195DE5F-95F2-4930-830A-60B31C5DBCE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F195DE5F-95F2-4930-830A-60B31C5DBCE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F195DE5F-95F2-4930-830A-60B31C5DBCE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7D944AA-36B4-465B-9AC0-75C39DE1C187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7D944AA-36B4-465B-9AC0-75C39DE1C187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7D944AA-36B4-465B-9AC0-75C39DE1C187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7D944AA-36B4-465B-9AC0-75C39DE1C187}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAA4AF6B-74A3-47FF-84FF-C19033E185C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA4AF6B-74A3-47FF-84FF-C19033E185C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA4AF6B-74A3-47FF-84FF-C19033E185C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA4AF6B-74A3-47FF-84FF-C19033E185C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACBD1E2A-D9ED-42EE-A2DF-A3861B06C3C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACBD1E2A-D9ED-42EE-A2DF-A3861B06C3C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACBD1E2A-D9ED-42EE-A2DF-A3861B06C3C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACBD1E2A-D9ED-42EE-A2DF-A3861B06C3C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

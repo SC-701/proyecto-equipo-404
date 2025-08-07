@@ -56,6 +56,7 @@ namespace Web.Pages.Platillos
             string endpoint = _configuracion.ObtenerMetodo("ApiEndPoints", "AgregarPlatillo");
 
             var cliente = new HttpClient();
+            cliente.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.User.Claims.Where(c => c.Type == "Token").FirstOrDefault().Value);
             var contenido = new StringContent(JsonSerializer.Serialize(Platillo), System.Text.Encoding.UTF8, "application/json");
             var respuesta = await cliente.PostAsync(endpoint, contenido);
 

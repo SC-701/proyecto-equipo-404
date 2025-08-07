@@ -4,8 +4,7 @@
     @Nombre VARCHAR(100),
     @Precio FLOAT,
     @Stock INT,
-    @IdEstado UNIQUEIDENTIFIER,
-	@Imagen VARBINARY(MAX)
+    @IdEstado UNIQUEIDENTIFIER
 
 AS
 BEGIN
@@ -17,8 +16,7 @@ BEGIN
             Nombre,
             Precio,
             Stock,
-            IdEstado,
-			Imagen
+            IdEstado
         )
         VALUES (
             @Id,
@@ -26,8 +24,7 @@ BEGIN
             @Nombre,
             @Precio,
             @Stock,
-            @IdEstado,
-			@Imagen
+            @IdEstado
         );
         SELECT @Id;
     COMMIT TRANSACTION
