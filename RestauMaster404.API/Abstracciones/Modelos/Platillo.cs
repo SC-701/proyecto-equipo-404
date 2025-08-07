@@ -30,7 +30,7 @@ namespace Abstracciones.Modelos
     {
         public Guid Id { get; set; }
         public string TipoPlatillo { get; set; }
-        public string Estado { get; set; }
+        public string Estado { get; set; }  
     }
 
     public class PlatilloDetalle : PlatilloResponse

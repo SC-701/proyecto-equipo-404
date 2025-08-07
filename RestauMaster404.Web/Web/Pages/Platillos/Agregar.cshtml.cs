@@ -16,9 +16,6 @@ namespace Web.Pages.Platillos
         public PlatilloRequest Platillo { get; set; } = new();
 
         [BindProperty]
-        public IFormFile ImagenArchivo { get; set; }  // ← Para recibir la imagen
-
-        [BindProperty]
         public List<SelectListItem> TiposPlatillo { get; set; } = new();
 
         [BindProperty]
@@ -43,14 +40,6 @@ namespace Web.Pages.Platillos
                 await CargarTiposPlatilloAsync();
                 await CargarEstadosAsync();
                 return Page();
-            }
-
-            // Leer la imagen como byte[]
-            if (ImagenArchivo != null && ImagenArchivo.Length > 0)
-            {
-                using var memoryStream = new MemoryStream();
-                await ImagenArchivo.CopyToAsync(memoryStream);
-                Platillo.Imagen = memoryStream.ToArray(); // ← Se asigna al modelo
             }
 
             string endpoint = _configuracion.ObtenerMetodo("ApiEndPoints", "AgregarPlatillo");
