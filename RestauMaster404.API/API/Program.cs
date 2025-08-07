@@ -1,8 +1,10 @@
 using Abstracciones.Interfaces.DA;
 using Abstracciones.Interfaces.Flujo;
+using Abstracciones.Interfaces.Servicios;
 using DA;
 using DA.Repositorios;
 using Flujo;
+using Servicios;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +32,8 @@ builder.Services.AddScoped<IVentaFlujo, VentaFlujo>();
 
 builder.Services.AddScoped<IDetalleVentaDA, DetalleVentaDA>();
 builder.Services.AddScoped<IDetalleVentaFlujo, DetalleVentaFlujo>();
+
+builder.Services.AddScoped<IConversorImagenServicio, ConversorImagenServicio>();
 
 var app = builder.Build();
 

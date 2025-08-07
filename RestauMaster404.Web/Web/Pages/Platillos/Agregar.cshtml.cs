@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Net;
+using System.Text;
 using System.Text.Json;
 
 namespace Web.Pages.Platillos
@@ -56,7 +57,20 @@ namespace Web.Pages.Platillos
             string endpoint = _configuracion.ObtenerMetodo("ApiEndPoints", "AgregarPlatillo");
 
             var cliente = new HttpClient();
-            var contenido = new StringContent(JsonSerializer.Serialize(Platillo), System.Text.Encoding.UTF8, "application/json");
+            var platilloEnvio = new
+            {
+                Platillo.Nombre,
+                Platillo.Precio,
+                Platillo.Stock,
+                Platillo.IdTipoPlatillo,
+                Platillo.IdEstado,
+                ImagenBase64 = Platillo.Imagen != null ? Convert.ToBase64String(Platillo.Imagen) : null
+            };
+
+            var json = JsonSerializer.Serialize(platilloEnvio);
+            Console.WriteLine(json); // o Debug.WriteLine(json);
+
+            var contenido = new StringContent(JsonSerializer.Serialize(platilloEnvio), Encoding.UTF8, "application/json");
             var respuesta = await cliente.PostAsync(endpoint, contenido);
 
             if (!respuesta.IsSuccessStatusCode)

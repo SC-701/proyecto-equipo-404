@@ -6,7 +6,7 @@
 
 <h2>Agregar Platillo</h2>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="mb-3">
         <label asp-for="Platillo.Nombre" class="form-label"></label>
         <input asp-for="Platillo.Nombre" class="form-control" />
@@ -24,10 +24,11 @@
         <input asp-for="Platillo.Stock" class="form-control" />
         <span asp-validation-for="Platillo.Stock" class="text-danger"></span>
     </div>
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" name="ImagenArchivo" />
-        <!-- Resto de campos: nombre, precio, tipo, etc. -->
-    </form>
+    <div class="mb-3">
+        <label class="form-label">Imagen</label>
+        <input type="file" name="ImagenArchivo" class="form-control" />
+    </div>
+
 
 
 

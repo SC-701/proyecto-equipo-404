@@ -1,5 +1,6 @@
 ﻿using Abstracciones.Interfaces.API;
 using Abstracciones.Interfaces.Flujo;
+using Abstracciones.Interfaces.Servicios;
 using Abstracciones.Modelos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +12,13 @@ namespace API.Controllers
     {
         private readonly IPlatilloFlujo _platilloFlujo;
         private readonly ILogger<PlatilloController> _logger;
+        private readonly IConversorImagenServicio _conversorImagenServicio;
 
-        public PlatilloController(IPlatilloFlujo platilloFlujo, ILogger<PlatilloController> logger)
+        public PlatilloController(IPlatilloFlujo platilloFlujo, ILogger<PlatilloController> logger, IConversorImagenServicio conversorImagenServicio)
         {
             _platilloFlujo = platilloFlujo;
             _logger = logger;
+            _conversorImagenServicio = conversorImagenServicio;
         }
 
         #region Operaciones
@@ -41,9 +44,15 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> Agregar([FromBody] PlatilloRequest platillo)
         {
+            if (platillo.Imagen == null && !string.IsNullOrWhiteSpace(platillo.ImagenBase64))
+            {
+                platillo.Imagen = _conversorImagenServicio.ConvertirBase64AByteArray(platillo.ImagenBase64);
+            }
+
             var resultado = await _platilloFlujo.Agregar(platillo);
             return CreatedAtAction(nameof(Obtener), new { Id = resultado }, null);
         }
+
 
         [HttpPut("{Id}")]
         public async Task<IActionResult> Editar([FromRoute] Guid Id, [FromBody] PlatilloRequest platillo)

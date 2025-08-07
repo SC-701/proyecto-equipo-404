@@ -16,8 +16,7 @@ namespace Abstracciones.Modelos
         [Range(0, int.MaxValue, ErrorMessage = "El stock debe ser mayor o igual a cero")]
         public int Stock { get; set; }
         [Display(Name = "Imagen")]
-        [StringLength(300, ErrorMessage = "La URL de la imagen es muy larga")]
-        public byte[] Imagen { get; set; }
+        public byte[]? Imagen { get; set; }
 
     }
 
@@ -28,6 +27,7 @@ namespace Abstracciones.Modelos
 
         [Required(ErrorMessage = "La propiedad IdEstado es requerida")]
         public Guid IdEstado { get; set; }
+        public string? ImagenBase64 { get; set; }
     }
 
     public class PlatilloResponse : PlatilloBase
