@@ -1,6 +1,7 @@
 ﻿using Abstracciones.Interfaces.API;
 using Abstracciones.Interfaces.Flujo;
 using Abstracciones.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -21,6 +22,7 @@ namespace API.Controllers
         #region Operaciones
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Obtener()
         {
             var resultado = await _estadoFlujo.Obtener();
@@ -39,6 +41,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Authorize (Roles ="2")]
         public async Task<IActionResult> Agregar([FromBody] EstadoRequest estado)
         {
             var id = await _estadoFlujo.Agregar(estado);
