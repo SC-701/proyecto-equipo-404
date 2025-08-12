@@ -1,0 +1,51 @@
+﻿@page
+@model Web.Pages.Estados.IndexModel
+@{
+    ViewData["Title"] = "Estados";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Estados</h2>
+        <a asp-page="Agregar" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Agregar Estado
+        </a>
+    </div>
+
+    @if (!ModelState.IsValid)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Html.ValidationSummary(true)
+        </div>
+    }
+
+    @if (Model.Estados.Any())
+    {
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var estado in Model.Estados)
+                {
+                    <tr>
+                        <td>@estado.Nombre</td>
+                        <td>
+                            <a asp-page="Editar" asp-route-id="@estado.Id" class="btn btn-sm btn-outline-secondary me-2">Editar</a>
+                            <a asp-page="Eliminar" asp-route-id="@estado.Id" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            No se encontraron estados. <a asp-page="Agregar">¿Te gustaría agregar uno?</a>
+        </div>
+    }
+</div>
