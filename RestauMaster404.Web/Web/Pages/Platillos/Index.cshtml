@@ -1,4 +1,64 @@
 ﻿@page
 @model Web.Pages.Platillos.IndexModel
 @{
+    ViewData["Title"] = "Lista de Platillos";
 }
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Lista de Platillos</h2>
+        <a asp-page="Agregar" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Agregar Platillo
+        </a>
+    </div>
+
+    @if (!ModelState.IsValid)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Html.ValidationSummary(true)
+        </div>
+    }
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var platillo in Model.Platillos)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">@platillo.Nombre</h5>
+                        <p class="card-text text-muted">
+                            <small class="text-secondary">Tipo: @platillo.TipoPlatillo</small>
+                        </p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Precio:</strong>
+                                <span>₡ @platillo.Precio.ToString("N2")</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Stock:</strong>
+                                <span class="badge @(platillo.Stock > 0 ? "bg-success" : "bg-danger") rounded-pill">
+                                    @platillo.Stock
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <strong>Estado:</strong>
+                                <span>@platillo.Estado</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end bg-light border-0">
+                        <a asp-page="Editar" asp-route-id="@platillo.Id" class="btn btn-sm btn-outline-secondary me-2">Editar</a>
+                        <a asp-page="Eliminar" asp-route-id="@platillo.Id" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (!Model.Platillos.Any())
+        {
+            <div class="col-12 text-center text-muted">
+                <p>No se encontraron platillos. <a asp-page="Agregar">¿Te gustaría agregar uno?</a></p>
+            </div>
+        }
+    </div>
+</div>

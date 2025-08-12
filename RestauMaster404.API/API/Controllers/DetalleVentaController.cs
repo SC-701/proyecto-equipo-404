@@ -1,6 +1,7 @@
 ﻿using Abstracciones.Interfaces.API;
 using Abstracciones.Interfaces.Flujo;
 using Abstracciones.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -21,6 +22,7 @@ namespace API.Controllers
         #region Operaciones
 
         [HttpGet("obtenerTodos/{IdVenta}")]
+        [Authorize(Roles = "1, 2")]
         public async Task<IActionResult> ObtenerPorVenta([FromRoute] Guid IdVenta)
         {
             var resultado = await _detalleVentaFlujo.ObtenerPorVenta(IdVenta);
@@ -30,6 +32,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{Id}")]
+        [Authorize(Roles = "1, 2")]
         public async Task<IActionResult> Obtener([FromRoute] Guid Id)
         {
             var resultado = await _detalleVentaFlujo.Obtener(Id);
@@ -39,6 +42,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "1, 2")]
         public async Task<IActionResult> Agregar([FromBody] DetalleVentaRequest detalle)
         {
             var resultado = await _detalleVentaFlujo.Agregar(detalle);
@@ -46,6 +50,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{Id}")]
+        [Authorize(Roles = "1, 2")]
         public async Task<IActionResult> Editar([FromRoute] Guid Id, [FromBody] DetalleVentaRequest detalle)
         {
             if (!await VerificarExiste(Id))
@@ -55,6 +60,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{Id}")]
+        [Authorize(Roles = "1, 2")]
         public async Task<IActionResult> Eliminar([FromRoute] Guid Id)
         {
             if (!await VerificarExiste(Id))

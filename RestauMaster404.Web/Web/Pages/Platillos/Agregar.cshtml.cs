@@ -1,5 +1,6 @@
 ﻿using Abstracciones.Interfaces.Reglas;
 using Abstracciones.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,6 +9,8 @@ using System.Text.Json;
 
 namespace Web.Pages.Platillos
 {
+    [Authorize(Roles = "1, 3")]
+
     public class AgregarModel : PageModel
     {
         private readonly IConfiguracion _configuracion;
@@ -46,6 +49,7 @@ namespace Web.Pages.Platillos
 
             var cliente = new HttpClient();
             cliente.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.User.Claims.Where(c => c.Type == "Token").FirstOrDefault().Value);
+            //^^^ Esto es lo de autenticación.
             var contenido = new StringContent(JsonSerializer.Serialize(Platillo), System.Text.Encoding.UTF8, "application/json");
             var respuesta = await cliente.PostAsync(endpoint, contenido);
 
@@ -64,6 +68,8 @@ namespace Web.Pages.Platillos
         {
             string endpoint = _configuracion.ObtenerMetodo("ApiEndPoints", "ObtenerTiposPlatillo");
             var cliente = new HttpClient();
+            cliente.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.User.Claims.Where(c => c.Type == "Token").FirstOrDefault().Value);
+            //^^^ Esto es lo de autenticación.
             var respuesta = await cliente.GetAsync(endpoint);
 
             if (respuesta.StatusCode == HttpStatusCode.OK)
@@ -84,6 +90,8 @@ namespace Web.Pages.Platillos
         {
             string endpoint = _configuracion.ObtenerMetodo("ApiEndPoints", "ObtenerEstados");
             var cliente = new HttpClient();
+            cliente.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.User.Claims.Where(c => c.Type == "Token").FirstOrDefault().Value);
+            //^^^ Esto es lo de autenticación.
             var respuesta = await cliente.GetAsync(endpoint);
 
             if (respuesta.StatusCode == HttpStatusCode.OK)

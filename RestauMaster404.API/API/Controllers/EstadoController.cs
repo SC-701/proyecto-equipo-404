@@ -22,7 +22,7 @@ namespace API.Controllers
         #region Operaciones
 
         [HttpGet]
-        [AllowAnonymous]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> Obtener()
         {
             var resultado = await _estadoFlujo.Obtener();
@@ -32,6 +32,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{Id}")]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> Obtener([FromRoute] Guid Id)
         {
             var estado = await _estadoFlujo.Obtener(Id);
@@ -41,7 +42,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Authorize (Roles ="2")]
+        [Authorize (Roles ="1")]
         public async Task<IActionResult> Agregar([FromBody] EstadoRequest estado)
         {
             var id = await _estadoFlujo.Agregar(estado);
@@ -49,6 +50,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{Id}")]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> Editar([FromRoute] Guid Id, [FromBody] EstadoRequest estado)
         {
             if (!await VerificarEstadoExiste(Id))
@@ -59,6 +61,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{Id}")]
+        [Authorize(Roles = "1")]
         public async Task<IActionResult> Eliminar([FromRoute] Guid Id)
         {
             if (!await VerificarEstadoExiste(Id))

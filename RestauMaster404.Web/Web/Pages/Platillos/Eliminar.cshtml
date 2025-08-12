@@ -1,4 +1,32 @@
-﻿@page
+﻿@page "{id:guid}"
 @model Web.Pages.Platillos.EliminarModel
 @{
+    ViewData["Title"] = "Eliminar Platillo";
 }
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0">Confirmación de Eliminación</h4>
+        </div>
+        <div class="card-body">
+            @if (!ModelState.IsValid)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @Html.ValidationSummary(true, "Ocurrió un error al intentar eliminar el platillo.")
+                </div>
+            }
+            <h5 class="card-title">¿Estás seguro de que quieres eliminar este platillo?</h5>
+            <p class="card-text">
+                Se va a eliminar el platillo: <strong>@Model.Platillo.Nombre</strong>. Esta acción no se puede deshacer.
+            </p>
+        </div>
+        <div class="card-footer d-flex justify-content-end">
+            <form method="post">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger me-2">Sí, Eliminar</button>
+                <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
