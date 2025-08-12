@@ -1,0 +1,51 @@
+﻿@page
+@model Web.Pages.TipoPlatillos.IndexModel
+@{
+    ViewData["Title"] = "Tipos de Platillo";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Tipos de Platillo</h2>
+        <a asp-page="Agregar" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Agregar Tipo
+        </a>
+    </div>
+
+    @if (!ModelState.IsValid)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Html.ValidationSummary(true)
+        </div>
+    }
+
+    @if (Model.TiposPlatillo.Any())
+    {
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tipo in Model.TiposPlatillo)
+                {
+                    <tr>
+                        <td>@tipo.Nombre</td>
+                        <td>
+                            <a asp-page="Editar" asp-route-id="@tipo.Id" class="btn btn-sm btn-outline-secondary me-2">Editar</a>
+                            <a asp-page="Eliminar" asp-route-id="@tipo.Id" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            No se encontraron tipos de platillo. <a asp-page="Agregar">¿Te gustaría agregar uno?</a>
+        </div>
+    }
+</div>

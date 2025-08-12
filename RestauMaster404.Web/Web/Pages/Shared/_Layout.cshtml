@@ -39,6 +39,17 @@
                 <!-- Submenús anidados -->
                 <ul class="submenu">
 
+                    <!-- Estados -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white text-decoration-none sub-toggle">
+                            <i class="bi bi-tag-fill me-2"></i> <span>Estados</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a class="text-white text-decoration-none" asp-page="/Estados/Index">Ver y Modificar</a></li>
+                            <li><a class="text-white text-decoration-none" asp-page="/Estados/Agregar">Agregar</a></li>
+                        </ul>
+                    </li>
+
                     <!-- Platillos -->
                     <li class="nav-item">
                         <a href="#" class="nav-link d-flex align-items-center text-white text-decoration-none sub-toggle">
@@ -47,6 +58,17 @@
                         <ul class="submenu">
                             <li><a class="text-white text-decoration-none" asp-page="/Platillos/Index">Ver y Modificar</a></li>
                             <li><a class="text-white text-decoration-none" asp-page="/Platillos/Agregar">Agregar</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Tipos de Platillo -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white text-decoration-none sub-toggle">
+                            <i class="bi bi-list me-2"></i> <span>Tipos de Platillo</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a class="text-white text-decoration-none" asp-page="/TipoPlatillos/Index">Ver y Modificar</a></li>
+                            <li><a class="text-white text-decoration-none" asp-page="/TipoPlatillos/Agregar">Agregar</a></li>
                         </ul>
                     </li>
 
