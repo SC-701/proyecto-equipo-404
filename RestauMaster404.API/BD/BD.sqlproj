@@ -97,5 +97,7 @@
     <Build Include="dbo\Stored Procedures\ObtenerUsuario.sql" />
     <Build Include="dbo\Stored Procedures\ObtenerPerfilesxUsuario.sql" />
     <Build Include="dbo\Stored Procedures\AgregarUsuario.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ConteoPlatillosPorTipo.sql" />
+    <Build Include="dbo\Stored Procedures\sp_ContarTiposPlatillo.sql" />
   </ItemGroup>
 </Project>
