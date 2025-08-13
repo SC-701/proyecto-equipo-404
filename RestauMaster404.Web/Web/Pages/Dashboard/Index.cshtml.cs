@@ -2,9 +2,11 @@ using Abstracciones.Interfaces.Reglas;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Web.Pages.Dashboard
 {
+    [AllowAnonymous]
     public class IndexModel : PageModel
     {
         private readonly IConfiguracion _configuracion;
@@ -25,13 +27,10 @@ namespace Web.Pages.Dashboard
         {
             try
             {
-                // Debe existir en appsettings.json dentro de ApiEndPoints:Metodos
-                // { "Nombre": "ContarTiposPlatillo", "Valor": "TipoPlatillo/contar" }
                 var endpoint = _configuracion.ObtenerMetodo("ApiEndPoints", "ContarTiposPlatillo");
 
                 using var cliente = new HttpClient();
 
-                // Token (si tu endpoint requiere autenticación)
                 var token = HttpContext.User?.Claims?.FirstOrDefault(c => c.Type == "Token")?.Value;
                 if (!string.IsNullOrWhiteSpace(token))
                     cliente.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);

@@ -69,6 +69,7 @@ namespace API.Controllers
             return NoContent();
         }
         [HttpGet("contar")]
+        [AllowAnonymous]
         public async Task<ActionResult<int>> Contar()
         {
             var total = await _tipoPlatilloFlujo.Contar();
