@@ -2,6 +2,7 @@
 using Abstracciones.Modelos;
 using Dapper;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace DA
 {
@@ -64,6 +65,13 @@ namespace DA
             string query = @"ObtenerTipoPlatillo";
             var resultadoConsulta = await _sqlConnection.QueryAsync<TipoPlatilloResponse>(query, new { Id });
             return resultadoConsulta.FirstOrDefault();
+        }
+        public async Task<int> Contar()
+        {
+            const string sp = "sp_ContarTiposPlatillo";
+            var total = await _sqlConnection.ExecuteScalarAsync<int>(
+                sp, commandType: CommandType.StoredProcedure);
+            return total;
         }
 
         #endregion

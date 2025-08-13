@@ -68,6 +68,12 @@ namespace API.Controllers
             await _tipoPlatilloFlujo.Eliminar(Id);
             return NoContent();
         }
+        [HttpGet("contar")]
+        public async Task<ActionResult<int>> Contar()
+        {
+            var total = await _tipoPlatilloFlujo.Contar();
+            return Ok(total);
+        }
 
         #endregion Operaciones
 

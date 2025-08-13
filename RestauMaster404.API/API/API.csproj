@@ -16,7 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Abstracciones.BW\Autorizacion.Flujo.csproj" />
     <ProjectReference Include="..\Abstracciones\Abstracciones.csproj" />
+    <ProjectReference Include="..\Autorizacion.Abstracciones\Autorizacion.Abstracciones.csproj" />
+    <ProjectReference Include="..\Autorizacion.DA\Autorizacion.DA.csproj" />
+    <ProjectReference Include="..\Autorizacion.Middleware\Autorizacion.Middleware.csproj" />
     <ProjectReference Include="..\DA\DA.csproj" />
     <ProjectReference Include="..\Flujo\Flujo.csproj" />
   </ItemGroup>

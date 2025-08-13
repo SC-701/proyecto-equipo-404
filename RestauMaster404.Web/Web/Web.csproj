@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Abstracciones.BW\Autorizacion.Flujo.csproj" />
     <ProjectReference Include="..\Abstracciones\Abstracciones.csproj" />
+    <ProjectReference Include="..\Autorizacion.Abstracciones\Autorizacion.Abstracciones.csproj" />
+    <ProjectReference Include="..\Autorizacion.DA\Autorizacion.DA.csproj" />
+    <ProjectReference Include="..\Autorizacion.Middleware\Autorizacion.Middleware.csproj" />
     <ProjectReference Include="..\Reglas\Reglas.csproj" />
 	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.2" />
 	<PackageReference Include="Autorizacion.Abstracciones" Version="2.0.6" />

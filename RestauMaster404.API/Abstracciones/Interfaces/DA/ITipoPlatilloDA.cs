@@ -9,5 +9,6 @@ namespace Abstracciones.Interfaces.DA
         Task<Guid> Agregar(TipoPlatilloRequest tipoPlatillo);
         Task<Guid> Editar(Guid Id, TipoPlatilloRequest tipoPlatillo);
         Task<Guid> Eliminar(Guid Id);
+        Task<int> Contar();
     }
 }
