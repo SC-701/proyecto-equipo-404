@@ -37,5 +37,9 @@ namespace Flujo
         {
             return await _tipoPlatilloDA.Obtener(Id);
         }
+        public async Task<int> Contar()
+        {
+            return await _tipoPlatilloDA.Contar();
+        }
     }
 }

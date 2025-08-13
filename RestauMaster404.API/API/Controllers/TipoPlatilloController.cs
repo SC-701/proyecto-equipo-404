@@ -1,6 +1,7 @@
 ﻿using Abstracciones.Interfaces.API;
 using Abstracciones.Interfaces.Flujo;
 using Abstracciones.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -61,6 +62,12 @@ namespace API.Controllers
                 return NotFound("Tipo de platillo no existe.");
             await _tipoPlatilloFlujo.Eliminar(Id);
             return NoContent();
+        }
+        [HttpGet("contar")]
+        public async Task<ActionResult<int>> Contar()
+        {
+            var total = await _tipoPlatilloFlujo.Contar();
+            return Ok(total);
         }
 
         #endregion Operaciones

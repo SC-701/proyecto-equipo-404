@@ -9,5 +9,6 @@ namespace Abstracciones.Interfaces.Flujo
         Task<Guid> Agregar(TipoPlatilloRequest tipoPlatillo);
         Task<Guid> Editar(Guid Id, TipoPlatilloRequest tipoPlatillo);
         Task<Guid> Eliminar(Guid Id);
+        Task<int> Contar();
     }
 }
