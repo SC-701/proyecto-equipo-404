@@ -1,4 +1,18 @@
 ﻿@page
 @model Web.Pages.Ventas.AgregarModel
 @{
+    ViewData["Title"] = "Agregar Venta";
 }
+
+<div class="container mt-4">
+    <h2>Nueva Venta</h2>
+    <hr />
+
+    <p>Haz clic en el botón para crear una nueva venta y empezar a agregar los platillos.</p>
+
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+        <button type="submit" class="btn btn-primary">Crear Venta</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

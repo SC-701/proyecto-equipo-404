@@ -9,13 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reglas", "Reglas\Reglas.csproj", "{8CD75AE9-FC82-4659-BA7C-49B0C6361533}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autorizacion.Flujo", "Abstracciones.BW\Autorizacion.Flujo.csproj", "{460AEF22-435F-E29D-8D65-C4F064BFC885}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autorizacion.Flujo", "Abstracciones.BW\Autorizacion.Flujo.csproj", "{460AEF22-435F-E29D-8D65-C4F064BFC885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autorizacion.Abstracciones", "Autorizacion.Abstracciones\Autorizacion.Abstracciones.csproj", "{815F63F7-F412-0591-56CE-DE0BFD232027}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autorizacion.Abstracciones", "Autorizacion.Abstracciones\Autorizacion.Abstracciones.csproj", "{815F63F7-F412-0591-56CE-DE0BFD232027}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autorizacion.Middleware", "Autorizacion.Middleware\Autorizacion.Middleware.csproj", "{AD5D11FA-FC32-A401-8AB1-1219F9AE6394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autorizacion.Middleware", "Autorizacion.Middleware\Autorizacion.Middleware.csproj", "{AD5D11FA-FC32-A401-8AB1-1219F9AE6394}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autorizacion.DA", "Autorizacion.DA\Autorizacion.DA.csproj", "{4BD5FD48-81F4-6223-3756-5F8C7397B040}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autorizacion.DA", "Autorizacion.DA\Autorizacion.DA.csproj", "{4BD5FD48-81F4-6223-3756-5F8C7397B040}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
