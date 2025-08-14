@@ -57,6 +57,9 @@ builder.Services.AddScoped<IVentaFlujo, VentaFlujo>();
 builder.Services.AddScoped<IDetalleVentaDA, DetalleVentaDA>();
 builder.Services.AddScoped<IDetalleVentaFlujo, DetalleVentaFlujo>();
 
+builder.Services.AddScoped<IReporteDA, ReporteDA>();
+builder.Services.AddScoped<IReporteFlujo, ReporteFlujo>();
+
 builder.Services.AddTransient<Autorizacion.Abstracciones.Flujo.IAutorizacionFlujo, Autorizacion.Flujo.AutorizacionFlujo>();
 builder.Services.AddTransient<Autorizacion.Abstracciones.DA.ISeguridadDA, Autorizacion.DA.SeguridadDA>();
 builder.Services.AddTransient<Autorizacion.Abstracciones.DA.IRepositorioDapper, Autorizacion.DA.Repositorios.RepositorioDapper>();
