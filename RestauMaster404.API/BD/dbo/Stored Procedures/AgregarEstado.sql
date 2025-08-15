@@ -1,0 +1,12 @@
+﻿CREATE PROCEDURE AgregarEstado
+    @Id UNIQUEIDENTIFIER,
+    @Nombre VARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRANSACTION
+        INSERT INTO Estados (Id, Nombre)
+        VALUES (@Id, @Nombre);
+        SELECT @Id;
+    COMMIT TRANSACTION
+END

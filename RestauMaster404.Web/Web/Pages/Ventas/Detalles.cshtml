@@ -1,0 +1,141 @@
+﻿@page "{id:guid}"
+@model Web.Pages.Ventas.DetallesModel
+@{
+    ViewData["Title"] = "Detalles de Venta";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Detalles de Venta</h2>
+        <a asp-page="Index" class="btn btn-secondary">Volver a Ventas</a>
+    </div>
+
+    @if (!ModelState.IsValid)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Html.ValidationSummary(true)
+        </div>
+    }
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+            Información de la Venta
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <strong>ID de Venta:</strong> @Model.Venta.Id
+                </div>
+                <div class="col-md-4">
+                    <strong>Fecha:</strong> @Model.Venta.Fecha.ToString("dd/MM/yyyy")
+                </div>
+                <div class="col-md-4">
+                    <strong>Hora:</strong> @Model.Venta.Hora.ToString(@"hh\:mm")
+                </div>
+            </div>
+            <div class="mt-2">
+                <h4>Total: ₡ @Model.Venta.Total.ToString("N2")</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    Agregar Platillo
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" id="precioUnitarioPlatillo" />
+
+                        <div class="mb-3">
+                            <label for="NuevoDetalle.IdPlatillo" class="form-label">Platillo</label>
+                            <select id="platilloDropdown" asp-for="NuevoDetalle.IdPlatillo" class="form-select">
+                                <option value="">Seleccione un Platillo</option>
+                                @foreach (var platillo in Model.Platillos)
+                                {
+                                    <option value="@platillo.Id" data-precio="@platillo.Precio">@platillo.Nombre (@platillo.Precio.ToString("N2"))</option>
+                                }
+                            </select>
+                            <span asp-validation-for="NuevoDetalle.IdPlatillo" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="NuevoDetalle.Cantidad" class="form-label">Cantidad</label>
+                            <input asp-for="NuevoDetalle.Cantidad" class="form-control" type="number" min="1" />
+                            <span asp-validation-for="NuevoDetalle.Cantidad" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="NuevoDetalle.PrecioUnitario" class="form-label">Precio Unitario</label>
+                            <input id="precioUnitarioInput" asp-for="NuevoDetalle.PrecioUnitario" class="form-control" readonly />
+                        </div>
+                        <button type="submit" class="btn btn-success">Agregar a Venta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    Detalles de la Venta
+                </div>
+                <div class="card-body">
+                    @if (Model.DetallesVenta.Any())
+                    {
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Platillo</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unitario</th>
+                                    <th>Subtotal</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var detalle in Model.DetallesVenta)
+                                {
+                                    <tr>
+                                        <td>@detalle.NombrePlatillo</td>
+                                        <td>@detalle.Cantidad</td>
+                                        <td>₡ @detalle.PrecioUnitario.ToString("N2")</td>
+                                        <td>₡ @detalle.SubTotal.ToString("N2")</td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning" role="alert">
+                            Esta venta no tiene platillos asociados.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var platilloDropdown = document.getElementById('platilloDropdown');
+            var precioUnitarioInput = document.getElementById('precioUnitarioInput');
+
+            platilloDropdown.addEventListener('change', function () {
+                var selectedOption = this.options[this.selectedIndex];
+                var precio = selectedOption.getAttribute('data-precio');
+                if (precio) {
+                    precioUnitarioInput.value = parseFloat(precio).toFixed(2);
+                } else {
+                    precioUnitarioInput.value = '';
+                }
+            });
+        });
+    </script>
+}
