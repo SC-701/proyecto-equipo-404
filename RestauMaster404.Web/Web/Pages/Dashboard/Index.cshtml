@@ -1,18 +1,72 @@
 ﻿@page
 @model Web.Pages.Dashboard.IndexModel
-<div class="row g-3">
-    <div class="col-md-3">
-        <div class="card text-white bg-primary shadow-sm">
-            <div class="card-body d-flex justify-content-between align-items-center">
-                <div>
-                    <h6 class="card-subtitle mb-1">Conteo</h6>
-                    <h5 class="card-title">Tipos de Platillo</h5>
-                    <div class="display-5 fw-bold">@Model.TiposPlatilloTotal</div>
+<div class="container-fluid py-4">
+    <div class="row g-4">
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100 bg-primary text-white shadow-sm border-0 rounded-4">
+                <div class="card-body p-4 d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-subtitle mb-1 text-white-50 fw-light">Conteo Total</h6>
+                        <h5 class="card-title text-white fw-bold">Tipos de Platillo</h5>
+                        <div class="display-5 fw-bold mt-2">@Model.TiposPlatilloTotal</div>
+                    </div>
+                    <i class="bi bi-list-ul" style="font-size: 3rem; opacity: 0.7;"></i>
                 </div>
-                <i class="bi bi-list-ul" style="font-size:2rem;"></i>
+                <div class="card-footer bg-transparent border-0 text-end">
+                    <a asp-page="/TipoPlatillos/Index" class="text-white text-decoration-none fw-bold">
+                        Ver más <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
             </div>
-            <div class="card-footer text-end">
-                <a asp-page="/TipoPlatillos/Index" class="text-white text-decoration-none">Ver más →</a>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card h-100 bg-success text-white shadow-sm border-0 rounded-4">
+                <div class="card-body p-4 d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="card-subtitle mb-1 text-white-50 fw-light">Total de</h6>
+                        <h5 class="card-title text-white fw-bold">Ventas del Mes</h5>
+                        <div class="display-5 fw-bold mt-2">₡ @Model.VentasDelMesTotal.ToString("N2")</div>
+                    </div>
+                    <i class="bi bi-cash-stack" style="font-size: 3rem; opacity: 0.7;"></i>
+                </div>
+                <div class="card-footer bg-transparent border-0 text-end">
+                    <a asp-page="/Ventas/Index" class="text-white text-decoration-none fw-bold">
+                        Ver más <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-6 col-md-12 mb-4">
+            <div class="card h-100 shadow-sm border-0 rounded-4">
+                <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
+                    <h5 class="card-title mb-0 fw-bold">Platillos Más Vendidos (Este Mes)</h5>
+                </div>
+                <div class="card-body p-0">
+                    @if (Model.PlatillosMasVendidos.Any())
+                    {
+                        <ul class="list-group list-group-flush rounded-bottom-4">
+                            @foreach (var platillo in Model.PlatillosMasVendidos)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span><i class="bi bi-tag-fill text-muted me-2"></i>@platillo.NombrePlatillo</span>
+                                    <span class="badge bg-primary rounded-pill">@platillo.CantidadVendida</span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="p-3 text-muted">No hay datos de ventas para este mes.</p>
+                    }
+                </div>
+                <div class="card-footer bg-white text-end border-0">
+                    <a asp-page="/Platillos/Index" class="text-decoration-none fw-bold text-primary">
+                        Ver todos los platillos <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
