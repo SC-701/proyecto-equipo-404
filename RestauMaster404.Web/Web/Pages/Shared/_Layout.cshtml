@@ -92,6 +92,31 @@
                 </a>
             </li>
 
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-white text-decoration-none d-flex align-items-center" asp-page="/Cuenta/Logout">
+                        <i class="bi bi-box-arrow-right me-2"></i>
+                        <span>Cerrar Sesión</span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-white text-decoration-none d-flex align-items-center" asp-page="/Cuenta/Login">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>
+                        <span>Iniciar Sesión</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white text-decoration-none d-flex align-items-center" asp-page="/Cuenta/Registro">
+                        <i class="bi bi-person-plus me-2"></i>
+                        <span>Registrarse</span>
+                    </a>
+                </li>
+            }
+
         </ul>
     </div>
 

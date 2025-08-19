@@ -46,7 +46,6 @@ namespace Web.Pages.Ventas
                 return RedirectToPage("Index");
             }
 
-            // CARGA LA VENTA ANTES DE USAR SUS PROPIEDADES
             await CargarDatosAsync();
 
             try
