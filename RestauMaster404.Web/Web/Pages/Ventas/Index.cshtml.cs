@@ -2,11 +2,13 @@ using System.Net;
 using System.Text.Json;
 using Abstracciones.Interfaces.Reglas;
 using Abstracciones.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Web.Pages.Ventas
 {
+    [Authorize(Roles = "1, 2")]
     public class IndexModel : PageModel
     {
         private readonly IConfiguracion _configuracion;

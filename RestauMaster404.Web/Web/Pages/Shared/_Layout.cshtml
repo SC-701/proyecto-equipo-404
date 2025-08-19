@@ -77,10 +77,8 @@
                             <i class="bi bi-cash-stack me-2"></i> <span>Ventas</span>
                         </a>
                         <ul class="submenu">
-                            <li><a class="text-white text-decoration-none" asp-page="/Ventas/Index">Ver</a></li>
+                            <li><a class="text-white text-decoration-none" asp-page="/Ventas/Index">Ver y Modificar</a></li>
                             <li><a class="text-white text-decoration-none" asp-page="/Ventas/Agregar">Agregar</a></li>
-                            <li><a class="text-white text-decoration-none" asp-page="/Ventas/Editar">Editar</a></li>
-                            <li><a class="text-white text-decoration-none" asp-page="/Ventas/Eliminar">Eliminar</a></li>
                         </ul>
                     </li>
 
@@ -93,6 +91,31 @@
                     <span>Privacidad</span>
                 </a>
             </li>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-white text-decoration-none d-flex align-items-center" asp-page="/Cuenta/Logout">
+                        <i class="bi bi-box-arrow-right me-2"></i>
+                        <span>Cerrar Sesión</span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-white text-decoration-none d-flex align-items-center" asp-page="/Cuenta/Login">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>
+                        <span>Iniciar Sesión</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white text-decoration-none d-flex align-items-center" asp-page="/Cuenta/Registro">
+                        <i class="bi bi-person-plus me-2"></i>
+                        <span>Registrarse</span>
+                    </a>
+                </li>
+            }
 
         </ul>
     </div>

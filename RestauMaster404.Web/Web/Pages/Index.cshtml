@@ -1,10 +1,39 @@
 ﻿@page
-@model IndexModel
+@model Web.Pages.IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="relative min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center overflow-hidden">
+
+    <div class="absolute inset-0 z-0 opacity-20">
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900 to-purple-900 transform rotate-45 scale-150 blur-3xl"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-4 py-8 max-w-4xl">
+
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">
+            Bienvenido a <span class="text-indigo-400">RestauMaster</span>
+        </h1>
+
+        <p class="text-lg sm:text-xl md:text-2xl font-light text-gray-300 mb-8 max-w-prose mx-auto">
+            La plataforma definitiva para la gestión de restaurantes.
+            Administra tus platillos, ventas y más, de manera fácil y eficiente.
+        </p>
+
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8">
+                <a asp-page="/Cuenta/Login" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                    Iniciar Sesión
+                </a>
+                <a asp-page="/Cuenta/Registro" class="w-full sm:w-auto px-8 py-3 bg-transparent border-2 border-white hover:bg-white text-white hover:text-gray-900 font-bold rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                    Registrarse
+                </a>
+            </div>
+        }
+    </div>
+
 </div>

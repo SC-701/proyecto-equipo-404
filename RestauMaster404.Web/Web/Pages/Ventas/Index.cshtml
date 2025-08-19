@@ -15,18 +15,16 @@
 
 @if (!ModelState.IsValid)
 {
-        <div class="alert alert-danger" role="alert">
-            @Html.ValidationSummary(true)
-        </div>
+    <div class="alert alert-danger" role="alert">
+        @Html.ValidationSummary(true)
+    </div>
 }
 
 @if (!Model.Ventas.Any())
 {
-
     <div class="alert alert-info" role="alert">
         No se encontraron ventas. <a asp-page="Agregar">¿Te gustaría agregar una nueva venta?</a>
     </div>
-        
 }
 else
 {
@@ -43,12 +41,12 @@ else
             @foreach (var venta in Model.Ventas)
             {
                 <tr>
-                    <td>@venta.Fecha</td>
-                    <td>@venta.Hora</td>
-                    <td>@venta.Total</td>
+                    <td>@venta.Fecha.ToString("dd/MM/yyyy")</td>
+                    <td>@venta.Hora.ToString(@"hh\:mm")</td>
+                    <td>₡ @venta.Total.ToString("N2")</td>
                     <td>
-                        <a asp-page="/DetalleVenta/Index" asp-route-id="@venta.Id" class="btn btn-sm btn-outline-secondary me-2">Detalle de la venta</a>
-                        <a asp-page="Editar" asp-route-id="@venta.Id" class="btn btn-sm btn-outline-secondary me-2">Editar</a>
+                        <a asp-page="Detalles" asp-route-id="@venta.Id" class="btn btn-sm btn-outline-secondary me-2">Ver detalles</a>
+
                         <a asp-page="Eliminar" asp-route-id="@venta.Id" class="btn btn-sm btn-outline-danger">Eliminar</a>
                     </td>
                 </tr>
@@ -56,4 +54,3 @@ else
         </tbody>
     </table>
 }
-

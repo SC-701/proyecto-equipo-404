@@ -99,5 +99,6 @@
     <Build Include="dbo\Stored Procedures\AgregarUsuario.sql" />
     <Build Include="dbo\Stored Procedures\sp_ConteoPlatillosPorTipo.sql" />
     <Build Include="dbo\Stored Procedures\sp_ContarTiposPlatillo.sql" />
+    <Build Include="dbo\Stored Procedures\sp_LlenarDatosIniciales.sql" />
   </ItemGroup>
 </Project>
