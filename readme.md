@@ -11,6 +11,6 @@ Proyecto:
 	- Persona objetivo: Administrador del restaurante.
 
 	-Modulos:
-		- Modulo 1: CRUD GENERAL (CRUD)
+		- Modulo 1: CRUD de Ventas y sus Detalles, Platillos y sus Tipos, Estados
 		- Modulo 2: Análisis de productos en el sistemas
 		- Modulo 3:	Desglose de ventas mensuales
