@@ -1,12 +1,14 @@
-using System.Net;
-using System.Text.Json;
 using Abstracciones.Interfaces.Reglas;
 using Abstracciones.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Net;
+using System.Text.Json;
 
 namespace Web.Pages.DetalleVenta
 {
+    [Authorize(Roles = "1, 2")]
     public class EliminarModel : PageModel
     {
         private readonly IConfiguracion _configuracion;
