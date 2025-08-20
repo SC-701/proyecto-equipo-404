@@ -1,11 +1,9 @@
 using Abstracciones.Interfaces.Reglas;
-using Microsoft.AspNetCore.Mvc;
+using Abstracciones.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net.Http.Headers;
-using Microsoft.AspNetCore.Authorization;
 using System.Text.Json;
-using Abstracciones.Modelos;
-using System.Net;
 
 namespace Web.Pages.Dashboard
 {
@@ -23,6 +21,8 @@ namespace Web.Pages.Dashboard
         public int TiposPlatilloTotal { get; private set; }
 
         public double VentasDelMesTotal { get; private set; }
+
+        public int PlatillosVendidosTotal { get; private set; }
 
         public List<PlatilloVendido> PlatillosMasVendidos { get; private set; } = new List<PlatilloVendido>();
 
@@ -74,6 +74,7 @@ namespace Web.Pages.Dashboard
         {
             VentasDelMesTotal = 0.0;
             PlatillosMasVendidos.Clear();
+            PlatillosVendidosTotal = 0;
 
             var token = HttpContext.User?.Claims?.FirstOrDefault(c => c.Type == "Token")?.Value;
             if (string.IsNullOrWhiteSpace(token))
@@ -129,10 +130,12 @@ namespace Web.Pages.Dashboard
                             }
                         }
 
+                        PlatillosVendidosTotal = platillosVendidos.Sum(kvp => kvp.Value);
+
                         PlatillosMasVendidos = platillosVendidos.OrderByDescending(kvp => kvp.Value)
-                                                               .Take(5)
-                                                               .Select(kvp => new PlatilloVendido { NombrePlatillo = kvp.Key, CantidadVendida = kvp.Value })
-                                                               .ToList();
+                                                                .Take(5)
+                                                                .Select(kvp => new PlatilloVendido { NombrePlatillo = kvp.Key, CantidadVendida = kvp.Value })
+                                                                .ToList();
                     }
                 }
             }
