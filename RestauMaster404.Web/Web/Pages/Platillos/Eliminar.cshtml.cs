@@ -65,22 +65,42 @@ namespace Web.Pages.Platillos
                 return Page();
             }
 
-            string endpointMetodo = _configuracion.ObtenerMetodo("ApiEndPoints", "EliminarPlatillo");
-            string eliminarPlatilloEndpoint = string.Format(endpointMetodo, Id);
-
-            var cliente = new HttpClient();
-            cliente.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.User.Claims.FirstOrDefault(c => c.Type == "Token")?.Value);
-
-            var respuesta = await cliente.DeleteAsync(eliminarPlatilloEndpoint);
-
-            if (!respuesta.IsSuccessStatusCode)
+            try
             {
-                ModelState.AddModelError(string.Empty, "Ocurrió un error al eliminar el platillo.");
+                string endpointMetodo = _configuracion.ObtenerMetodo("ApiEndPoints", "EliminarPlatillo");
+                string eliminarPlatilloEndpoint = string.Format(endpointMetodo, Id);
+
+                var cliente = new HttpClient();
+                cliente.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.User.Claims.FirstOrDefault(c => c.Type == "Token")?.Value);
+
+                var respuesta = await cliente.DeleteAsync(eliminarPlatilloEndpoint);
+
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    return RedirectToPage("Index");
+                }
+                else
+                {
+                    if (respuesta.StatusCode == HttpStatusCode.InternalServerError)
+                    {
+                        ModelState.AddModelError(string.Empty, "Error: El platillo se encuentra asociado a una o varias ventas y no puede ser eliminado.");
+                    }
+                    else
+                    {
+                        var error = await respuesta.Content.ReadAsStringAsync();
+                        ModelState.AddModelError(string.Empty, $"Ocurrió un error al eliminar el platillo: {error}");
+                    }
+
+                    await OnGetAsync();
+                    return Page();
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, $"Ocurrió un error inesperado al eliminar el platillo: {ex.Message}");
                 await OnGetAsync();
                 return Page();
             }
-
-            return RedirectToPage("Index");
         }
     }
 }
