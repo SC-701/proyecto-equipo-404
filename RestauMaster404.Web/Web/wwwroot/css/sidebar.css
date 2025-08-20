@@ -1,0 +1,89 @@
+﻿/* Estilos generales del sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #2a2f7a;
+    color: white;
+    padding-top: 60px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+    .sidebar .logo {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        font-size: 22px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .sidebar .nav {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .sidebar .nav-item {
+        /* Elimina padding aquí, lo controlamos en .nav-link */
+        font-size: 16px;
+    }
+
+    /* Estilo uniforme para todos los enlaces del menú */
+    .sidebar .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 20px;
+        color: white;
+        font-size: 16px;
+        text-decoration: none;
+        width: 100%;
+        transition: background 0.3s;
+    }
+
+        .sidebar .nav-link:hover {
+            background-color: #4147a4;
+            text-decoration: none;
+        }
+
+        /* Íconos dentro del nav-link */
+        .sidebar .nav-link i {
+            font-size: 18px;
+        }
+
+    /* Submenús anidados */
+    .sidebar .submenu {
+        padding-left: 30px;
+        list-style: none;
+        display: none;
+    }
+
+        .sidebar .submenu.show {
+            display: block;
+        }
+
+    /* Item activo puede mostrar su submenú */
+    .sidebar .nav-item.active > .submenu {
+        display: block;
+    }
+
+/* Ajuste del main para correrlo a la derecha */
+.main-content {
+    margin-left: 250px;
+    padding: 30px;
+}
+
+/* Cursor pointer en los links interactivos */
+.sidebar .nav-item .nav-link {
+    cursor: pointer;
+}
+
+.sidebar-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin: 8px 20px;
+}

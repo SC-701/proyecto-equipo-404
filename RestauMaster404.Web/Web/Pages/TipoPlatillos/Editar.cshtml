@@ -1,0 +1,29 @@
+﻿@page "{id:guid}"
+@model Web.Pages.TipoPlatillos.EditarModel
+@{
+    ViewData["Title"] = "Editar Tipo de Platillo";
+}
+
+<div class="container mt-4">
+    <h2>Editar Tipo de Platillo</h2>
+    <hr />
+
+    <form method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <div class="mb-3">
+            <label asp-for="TipoPlatillo.Nombre" class="form-label"></label>
+            <input asp-for="TipoPlatillo.Nombre" class="form-control" />
+            <span asp-validation-for="TipoPlatillo.Nombre" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

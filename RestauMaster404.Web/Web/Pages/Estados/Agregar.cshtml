@@ -1,0 +1,27 @@
+﻿@page
+@model Web.Pages.Estados.AgregarModel
+@{
+    ViewData["Title"] = "Agregar Estado";
+}
+
+<div class="container mt-4">
+    <h2>Agregar Estado</h2>
+    <hr />
+
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <div class="mb-3">
+            <label asp-for="Estado.Nombre" class="form-label"></label>
+            <input asp-for="Estado.Nombre" class="form-control" />
+            <span asp-validation-for="Estado.Nombre" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,57 @@
+﻿@page "{id:guid}"
+@model Web.Pages.Platillos.EditarModel
+@{
+    ViewData["Title"] = "Editar Platillo";
+}
+
+<div class="container mt-4">
+    <h2>Editar Platillo</h2>
+    <hr />
+
+    <form method="post">
+        <input type="hidden" name="id" value="@Model.Id" />
+
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+        <div class="mb-3">
+            <label asp-for="Platillo.Nombre" class="form-label"></label>
+            <input asp-for="Platillo.Nombre" class="form-control" />
+            <span asp-validation-for="Platillo.Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Platillo.Precio" class="form-label"></label>
+            <input asp-for="Platillo.Precio" class="form-control" />
+            <span asp-validation-for="Platillo.Precio" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Platillo.Stock" class="form-label"></label>
+            <input asp-for="Platillo.Stock" class="form-control" />
+            <span asp-validation-for="Platillo.Stock" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Platillo.IdTipoPlatillo" class="form-label"></label>
+            <select asp-for="Platillo.IdTipoPlatillo" asp-items="Model.TiposPlatillo" class="form-select">
+                <option value="">Seleccione un tipo</option>
+            </select>
+            <span asp-validation-for="Platillo.IdTipoPlatillo" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Platillo.IdEstado" class="form-label"></label>
+            <select asp-for="Platillo.IdEstado" asp-items="Model.Estados" class="form-select">
+                <option value="">Seleccione un estado</option>
+            </select>
+            <span asp-validation-for="Platillo.IdEstado" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

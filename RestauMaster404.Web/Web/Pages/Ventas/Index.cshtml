@@ -1,0 +1,56 @@
+﻿@page
+@model Web.Pages.Ventas.IndexModel
+@{
+    ViewData["Title"] = "Ventas";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Ventas</h2>
+        <a asp-page="Agregar" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Agregar Venta
+        </a>
+    </div>
+</div>
+
+@if (!ModelState.IsValid)
+{
+    <div class="alert alert-danger" role="alert">
+        @Html.ValidationSummary(true)
+    </div>
+}
+
+@if (!Model.Ventas.Any())
+{
+    <div class="alert alert-info" role="alert">
+        No se encontraron ventas. <a asp-page="Agregar">¿Te gustaría agregar una nueva venta?</a>
+    </div>
+}
+else
+{
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Total</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var venta in Model.Ventas)
+            {
+                <tr>
+                    <td>@venta.Fecha.ToString("dd/MM/yyyy")</td>
+                    <td>@venta.Hora.ToString(@"hh\:mm")</td>
+                    <td>₡ @venta.Total.ToString("N2")</td>
+                    <td>
+                        <a asp-page="Detalles" asp-route-id="@venta.Id" class="btn btn-sm btn-outline-secondary me-2">Ver detalles</a>
+
+                        <a asp-page="Eliminar" asp-route-id="@venta.Id" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
